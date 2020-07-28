@@ -43,6 +43,7 @@
         <th scope="col">Percentuale</th>
         <th scope="col">Anni di detraibilità</th>
         <th>
+
           <ng-container *ngIf="montante">
             Importo attualizzato
           </ng-container>
@@ -55,7 +56,7 @@
         importo: 20000,
         percentuale: 10,
         anni: 3 -->
-      <tr *ngFor="let riga of jsonIn">
+      <tr *ngFor="let riga of jsonIn; let i = index">
         <td style="width:25%" >
           {{ riga.importo}}€
         </td>
@@ -71,6 +72,10 @@
           <ng-container *ngIf="montante">
             {{ riga.importoAttualizzato }}€
           </ng-container>
+          <button type="button" (click)="remove(i)"  class="float-right btn btn-outline-secondary">
+            <i class="fas fa-trash float-right"></i>
+          </button>
+
 
         </td>
       </tr>

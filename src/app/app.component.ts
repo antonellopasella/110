@@ -36,10 +36,26 @@ export class AppComponent {
   tasso;
   somma;
 
+  constructor() {
+    this.calcola();
+  }
+
+  reset() {
+    delete this.montante;
+    delete this.somma;
+    delete this.tasso;
+  }
+
 
   add() {
+    this.reset();
     this.jsonIn.push(this.newRow);
     this.newRow = {};
+  }
+
+  remove(i) {
+    this.reset();
+    this.jsonIn.splice(i, 1);
   }
 
   calcola() {
