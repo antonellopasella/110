@@ -1,0 +1,126 @@
+<div class="container">
+  <div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <h1 class="display-4">110% and friends</h1>
+      <p class="lead">La cessione del credito e il tasso di sconto spiegati ai profani.</p>
+    </div>
+  </div>
+
+  <form #form="ngForm">
+    <div class="form-row">
+      <div class="form-group col-md-3">
+        <label for="inputEmail4">Importo dei lavori</label>
+        <div class="input-group mb-2">
+          <input name="importo" min="1" required [(ngModel)]="newRow.importo" type="number" class="form-control" id="inlineFormInputGroup" placeholder="">
+          <div class="input-group-append">
+            <div class="input-group-text">€</div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group col-md-4">
+        <label for="inputPassword4">Percentuale di incentivo</label>
+        <div class="input-group mb-2">
+          <input name="importo" min="1" required [(ngModel)]="newRow.percentuale" type="number" class="form-control" id="inlineFormInputGroup" placeholder="">
+          <div class="input-group-append">
+            <div class="input-group-text">%</div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group col-md-3">
+        <label for="inputPassword4">Anni di detraibilità</label>
+        <input name="importo" min="1" required [(ngModel)]="newRow.anni" type="number" class="form-control" id="inputPassword4">
+      </div>
+      <div class="form-group col-md-2">
+        <label for="inputPassword4">&nbsp;</label>
+        <button [disabled]="form.invalid" (click)="add()" class="d-block btn btn-block btn-outline-primary">Aggiungi</button>
+      </div>
+    </div>
+  </form>
+  <table class="table table-sm">
+    <thead>
+      <tr>
+        <th scope="col">Importo dei lavori</th>
+        <th scope="col">Percentuale</th>
+        <th scope="col">Anni di detraibilità</th>
+        <th>
+          <ng-container *ngIf="montante">
+            Importo attualizzato
+          </ng-container>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- jsonIn = [
+      {
+        importo: 20000,
+        percentuale: 10,
+        anni: 3 -->
+      <tr *ngFor="let riga of jsonIn">
+        <td style="width:25%" >
+          {{ riga.importo}}€
+        </td>
+        <td style="width:25%" >
+
+          {{ riga.percentuale}}%
+        </td>
+        <td style="width:25%" >
+
+          {{ riga.anni }} anni
+        </td>
+        <td style="width:25%" >
+          <ng-container *ngIf="montante">
+            {{ riga.importoAttualizzato }}€
+          </ng-container>
+
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <form #form="ngForm">
+    <div class="form-row">
+      <div class="form-group col-md-3">
+        <label for="inputEmail4">Tasso di interesse</label>
+        <div class="input-group mb-2">
+          <input name="tassoInteresse" min="1" required [(ngModel)]="tassoInteresse" type="number" class="form-control" id="inlineFormInputGroup" placeholder="">
+          <div class="input-group-append">
+            <div class="input-group-text">%</div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group col-md-2">
+        <label for="inputPassword4">&nbsp;</label>
+        <button [disabled]="!tassoInteresse || jsonIn.length === 0" (click)="calcola()" class="d-block btn btn-block btn-outline-primary">Calcola</button>
+      </div>
+    </div>
+    <div class="form-row" *ngIf="montante">
+      <div class="form-group col-md-4">
+        <label for="inputPassword4">Totale lavori</label>
+        <div class="input-group mb-2">
+          <input [ngModel]="somma" name="somma" disabled>
+          <div class="input-group-append">
+            <div class="input-group-text">€</div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group col-md-4">
+        <label for="inputPassword4">Montante attualizzato</label>
+        <div class="input-group mb-2">
+          <input [ngModel]="montante" name="montante" disabled>
+          <div class="input-group-append">
+            <div class="input-group-text">€</div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group col-md-3">
+        <label for="inputPassword4">Tasso di sconto</label>
+        <div class="input-group mb-2">
+          <input [ngModel]="tasso" name="tasso" class="form-control" disabled>
+          <div class="input-group-append">
+            <div class="input-group-text">%</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
