@@ -34,7 +34,8 @@ export class AppComponent {
 
   montante;
   tasso;
-  somma;
+  sommaAttualizzata;
+  totaleDetrazioni;
 
   constructor() {
     this.calcola();
@@ -42,7 +43,8 @@ export class AppComponent {
 
   reset() {
     delete this.montante;
-    delete this.somma;
+    delete this.sommaAttualizzata;
+    delete this.totaleDetrazioni;
     delete this.tasso;
   }
 
@@ -59,7 +61,8 @@ export class AppComponent {
   }
 
   calcola() {
-    this.somma = 0;
+    this.sommaAttualizzata = 0;
+    this.totaleDetrazioni = 0;
     this.montante = 0;
     const r = this.tassoInteresse / 100;
     const q = 1 + r;
@@ -68,15 +71,15 @@ export class AppComponent {
 
 // ( riga.importo * q^riga.anni) / ( r * q^n)
       const importo = riga.importo / riga.anni * (riga.percentuale / 100);
-
+      this.totaleDetrazioni += riga.importo * (riga.percentuale / 100) ;
       const parziale = (importo * (Math.pow(q, riga.anni) - 1)) / ( r * Math.pow(q, riga.anni)  );
       this.montante += parziale;
-      console.log(parziale);
+      console.log(this.totaleDetrazioni);
       riga.importoAttualizzato = parziale.toFixed(0);
-      this.somma += riga.importo;
+      this.sommaAttualizzata += riga.importo;
     });
     this.montante = Math.ceil(this.montante);
-    this.tasso = 1 - this.montante / this.somma;
+    this.tasso = 1 - this.totaleDetrazioni / this.sommaAttualizzata;
     this.tasso = (this.tasso * 100).toFixed(0);
 
   }

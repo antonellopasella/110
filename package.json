@@ -4,11 +4,11 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve --open",
-    "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "deploy": "ng deploy --no-silent --base-href=/110/"
+    "deploy": "ng deploy --no-silent --base-href=/110/",
+    "build": "ng build --prod"
   },
   "private": true,
   "dependencies": {

@@ -102,14 +102,23 @@
       <div class="form-group col-md-4">
         <label for="inputPassword4">Totale lavori</label>
         <div class="input-group mb-2">
-          <input [ngModel]="somma" name="somma" disabled>
+          <input [ngModel]="sommaAttualizzata" name="sommaAttualizzata" disabled>
           <div class="input-group-append">
             <div class="input-group-text">€</div>
           </div>
         </div>
       </div>
       <div class="form-group col-md-4">
-        <label for="inputPassword4">Montante attualizzato</label>
+        <label for="inputPassword4">Totale detrazioni</label>
+        <div class="input-group mb-2">
+          <input [ngModel]="totaleDetrazioni" name="totaleDetrazioni" disabled>
+          <div class="input-group-append">
+            <div class="input-group-text">€</div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group col-md-4">
+        <label for="inputPassword4">Detrazioni attualizzate</label>
         <div class="input-group mb-2">
           <input [ngModel]="montante" name="montante" disabled>
           <div class="input-group-append">
