@@ -79,7 +79,8 @@ export class AppComponent {
       this.sommaAttualizzata += riga.importo;
     });
     this.montante = Math.ceil(this.montante);
-    this.tasso = 1 - this.totaleDetrazioni / this.sommaAttualizzata;
+    this.tasso = 1 - this.montante / this.totaleDetrazioni;
+    debugger;
     this.tasso = (this.tasso * 100).toFixed(0);
 
   }
