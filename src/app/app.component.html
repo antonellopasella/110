@@ -99,28 +99,28 @@
       </div>
     </div>
     <div class="form-row" *ngIf="montante">
-      <div class="form-group col-md-4">
+      <div class="form-group col-md-3">
         <label for="inputPassword4">Totale lavori</label>
         <div class="input-group mb-2">
-          <input [ngModel]="sommaAttualizzata" name="sommaAttualizzata" disabled>
+          <input [ngModel]="sommaAttualizzata" class="form-control" name="sommaAttualizzata" disabled>
           <div class="input-group-append">
             <div class="input-group-text">€</div>
           </div>
         </div>
       </div>
-      <div class="form-group col-md-4">
+      <div class="form-group col-md-3">
         <label for="inputPassword4">Totale detrazioni</label>
         <div class="input-group mb-2">
-          <input [ngModel]="totaleDetrazioni" name="totaleDetrazioni" disabled>
+          <input [ngModel]="totaleDetrazioni" class="form-control" name="totaleDetrazioni" disabled>
           <div class="input-group-append">
             <div class="input-group-text">€</div>
           </div>
         </div>
       </div>
-      <div class="form-group col-md-4">
+      <div class="form-group col-md-3">
         <label for="inputPassword4">Detrazioni attualizzate</label>
         <div class="input-group mb-2">
-          <input [ngModel]="montante" name="montante" disabled>
+          <input [ngModel]="montante" class="form-control" name="montante" disabled>
           <div class="input-group-append">
             <div class="input-group-text">€</div>
           </div>
